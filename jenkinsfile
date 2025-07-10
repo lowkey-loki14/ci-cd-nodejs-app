@@ -1,8 +1,11 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = 'lowkey-loki14/ci-cd-nodejs-app'
+        IMAGE_NAME = 'loki1492/ci-cd-nodejs-app'
     }
+environment {
+  IMAGE_NAME = 'lowkey-loki/ci-cd-nodejs-app'
+}
     stages {
         stage('Clone Code') {
             steps {
@@ -28,7 +31,7 @@ pipeline {
             steps {
                 sshagent(['ecommerce-key']) {
                     sh '''
-                    ssh -o StrictHostKeyChecking=no ubuntu@34.224.221.226 << EOF
+                    ssh -o StrictHostKeyChecking=no ubuntu@54.91.42.13 << EOF
                       docker rm -f ci-cd-nodejs-app || true
                       docker pull $IMAGE_NAME
                       docker run -d -p 3000:3000 --name ci-cd-app $IMAGE_NAME
