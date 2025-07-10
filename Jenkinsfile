@@ -5,12 +5,11 @@ pipeline {
         IMAGE_NAME = 'loki1492/ci-cd-nodejs-app'
     }
     stage('Clone Code') {
-    steps {
-        git branch: 'main', url: 'https://github.com/lowkey-loki14/ci-cd-nodejs-app.git'
+      steps {
+          git branch: 'main', url: 'https://github.com/lowkey-loki14/ci-cd-nodejs-app.git'
     }
 }
-    
-        stage('Build Docker Image') {
+     stage('Build Docker Image') {
             steps {
                 script {
                     sh 'docker build -t $IMAGE_NAME .'
