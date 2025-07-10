@@ -4,9 +4,6 @@ pipeline {
     environment {
         IMAGE_NAME = 'loki1492/ci-cd-nodejs-app'
     }
-environment {
-  IMAGE_NAME = 'loki1492/ci-cd-nodejs-app'
-}
     stages {
         stage('Clone Code') {
             steps {
